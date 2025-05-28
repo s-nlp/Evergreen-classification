@@ -152,10 +152,14 @@ export OPENAI_API_KEY="your-api-key-here"
 If you use this code in your research, please cite:
 
 ```bibtex
-@article{yourlastname2024multilingual,
-  title={Multilingual Temporal Classification},
-  author={Your Name},
-  year={2024}
+@misc{pletenev2025truetomorrowmultilingualevergreen,
+      title={Will It Still Be True Tomorrow? Multilingual Evergreen Question Classification to Improve Trustworthy QA}, 
+      author={Sergey Pletenev and Maria Marina and Nikolay Ivanov and Daria Galimzianova and Nikita Krayko and Mikhail Salnikov and Vasily Konovalov and Alexander Panchenko and Viktor Moskvoretskii},
+      year={2025},
+      eprint={2505.21115},
+      archivePrefix={arXiv},
+      primaryClass={cs.CL},
+      url={https://arxiv.org/abs/2505.21115}, 
 }
 ```
 
