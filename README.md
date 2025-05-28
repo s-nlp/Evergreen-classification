@@ -1,7 +1,15 @@
+<h1 align="center">🌲EverGreen QA 🍂 </h1>
+<h3 align="center">Will It Still Be True Tomorrow? Multilingual Evergreen Question Classification to Improve Trustworthy QA</h3>
+
+<p align="center">
+  <a href="https://arxiv.org/abs/2505.21115">📄arXiv</a> •
+  <a href="https://github.com/s-nlp/Evergreen-classification">🌐GitHub</a> •
+  <a href="https://huggingface.co/collections/s-nlp/evergreen-683465909575cb89d6b904fe">🤗HuggingFace</a>
+</p>
+
+
 ![Python](https://img.shields.io/badge/python-3.8+-blue.svg)
 ![License](https://img.shields.io/badge/license-MIT-green.svg)
-
-# Will It Still Be True Tomorrow? Multilingual Evergreen Question Classification to Improve Trustworthy QA
 
 This repository contains the implementation of a multilingual text classification system that categorizes questions based on their temporal mutability.
 
@@ -9,6 +17,8 @@ This repository contains the implementation of a multilingual text classificatio
 
 Large Language Models (LLMs) often hallucinate in question answering (QA) tasks. A key yet underexplored factor contributing to this is the temporality of questions -- whether they are evergreen (answers remain stable over time) or mutable (answers change). In this work, we introduce EverGreenQA, the first multilingual QA dataset with evergreen labels, supporting both evaluation and training.
 Using EverGreenQA, we benchmark 12 modern LLMs to assess whether they encode question temporality explicitly (via verbalized judgments) or implicitly (via uncertainty signals). We also train EG-E5, a lightweight multilingual classifier that achieves SoTA performance on this task. Finally, we demonstrate the practical utility of evergreen classification across three applications: improving self-knowledge estimation, filtering QA datasets, and explaining GPT-4o’s retrieval behavior.
+
+[Some questions have answers that stay the same (evergreen), like facts of nature. Others have answers that change over time and will change in the future (mutable), like global trends or statistics.](evergreen.pdf)
 
 ## Overview
 
