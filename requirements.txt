@@ -1,0 +1,30 @@
+# Core dependencies
+torch>=2.0.0
+transformers>=4.30.0
+datasets>=2.12.0
+evaluate>=0.4.0
+accelerate>=0.20.0
+
+# Data processing
+pandas>=2.0.0
+numpy>=1.24.0
+pyyaml>=6.0
+
+# Progress bars and logging
+tqdm>=4.65.0
+
+# Model serving and generation
+vllm>=0.2.0
+openai>=1.0.0
+
+# Additional ML tools
+scikit-learn>=1.2.0
+scipy>=1.10.0
+
+# Optional: for development
+jupyter>=1.0.0
+matplotlib>=3.7.0
+seaborn>=0.12.0
+
+# Optional: for API/proxy support (if needed)
+httpx-socks>=0.7.0

@@ -1,0 +1,75 @@
+# Multilingual Temporal Classification Configuration
+
+# Model configuration
+model:
+  name: "intfloat/multilingual-e5-large-instruct"
+  max_length: 128
+  device_map: "auto"
+
+# Training configuration
+training:
+  output_dir: "./results/multilingual-e5-large-instruct"
+  epochs: 8
+  batch_size: 16
+  eval_batch_size: 128
+  learning_rate: 4.676e-05
+  warmup_steps: 500
+  weight_decay: 0.01
+  seed: 42
+  fp16: true  # Enable mixed precision training
+  gradient_accumulation_steps: 1
+  eval_steps: 500
+  save_steps: 1000
+  logging_steps: 50
+  
+# Loss function configuration
+loss:
+  type: "focal"  # Options: "focal", "cross_entropy"
+  gamma: 2.0
+  alpha: 0.25
+
+# Data configuration
+data:
+  train_path: "./datasets/train.csv"
+  train_synth_path: "./datasets/train_synth.csv"
+  val_path: "./datasets/dev.csv"
+  test_path: "./datasets/test.csv"
+  languages: 
+    - "Russian"
+    - "English" 
+    - "French"
+    - "German"
+    - "Hebrew"
+    - "Arabic"
+    - "Chinese"
+  # Optional: additional training data
+  additional_data:
+    - "./datasets/train_synth.csv"
+
+# Generation/Evaluation configuration
+generation:
+  # Models to evaluate
+  models:
+    - "meta-llama/Llama-3.1-8B-Instruct"
+    - "meta-llama/Llama-3.1-70B-Instruct"
+    - "google/gemma-2-9b-it"
+    - "google/gemma-2-27b-it"
+    - "Qwen/Qwen2.5-7B-Instruct"
+    - "mistralai/Mistral-7B-Instruct-v0.3"
+  
+  # vLLM configuration
+  tensor_parallel_size: 2
+  gpu_memory_utilization: 0.95
+  
+  # OpenAI configuration (for translation)
+  openai_model: "gpt-4"
+  translation_batch_size: 10
+
+# Experiment tracking
+experiment:
+  name: "multilingual_temporal_classification"
+  tags:
+    - "multilingual"
+    - "classification"
+    - "temporal"
+  description: "Classify questions as having mutable or immutable answers across 7 languages"
