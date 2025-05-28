@@ -43,7 +43,7 @@ pip install -r requirements.txt
 ## Project Structure
 
 ```
-multilingual-temporal-classification/
+evergreen-classification/
 ├── README.md
 ├── requirements.txt
 ├── config/
@@ -53,8 +53,8 @@ multilingual-temporal-classification/
 │   ├── generate.py         # Generation/evaluation script
 │   └── utils/
 │       ├── data_utils.py
-├── data/
-│   └── datasets/           # Place your CSV files here
+├── datasets/
+│   └── aliases/           
 ├── models/                 # Saved models directory
 ├── results/               # Training results
 └── docs/
@@ -64,7 +64,7 @@ multilingual-temporal-classification/
 ## Data Format
 
 The expected CSV format for training data:
-- `label`: Binary classification label (0 or 1)
+- `is_evergreen`: Binary classification label (0 or 1)
 - Language columns: `Russian`, `English`, `French`, `German`, `Hebrew`, `Arabic`, `Chinese`
 
 ## Usage
