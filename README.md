@@ -23,7 +23,6 @@ The system supports classification across 7 languages: English, Russian, French,
 - 🌍 **Multilingual Support**: Train and evaluate on 7 different languages
 - 🤖 **Multiple Model Support**: Compatible with various transformer models (mDeBERTa, E5, mBERT)
 - 📊 **Per-Language Metrics**: Detailed F1 scores for each language
-- 🔧 **Custom Loss Functions**: Implements focal loss with class weighting
 - 🚀 **Efficient Generation**: Uses vLLM for fast inference with multiple LLMs
 
 ## Installation
@@ -118,7 +117,6 @@ python src/generate.py \
 - Epochs: 8
 - Warmup Steps: 500
 - Weight Decay: 0.01
-- Loss Function: Focal Loss with class weighting
 
 ## Configuration
 
