@@ -28,10 +28,10 @@ The system supports classification across 7 languages: English, Russian, French,
 
 ## Features
 
-- 🌍 **Multilingual Support**: Train and evaluate on 7 different languages
-- 🤖 **Multiple Model Support**: Compatible with various transformer models (mDeBERTa, E5, mBERT)
-- 📊 **Per-Language Metrics**: Detailed F1 scores for each language
-- 🚀 **Efficient Generation**: Uses vLLM for fast inference with multiple LLMs
+- **Multilingual Support**: Train and evaluate on 7 different languages
+- **Multiple Model Support**: Compatible with various transformer models (mDeBERTa, E5, mBERT)
+- **Per-Language Metrics**: Detailed F1 scores for each language
+- **Efficient Generation**: Uses vLLM for fast inference with multiple LLMs
 
 ## Installation
 
@@ -75,6 +75,8 @@ The expected CSV format for training data:
 - `is_evergreen`: Binary classification label (0 or 1)
 - Language columns: `Russian`, `English`, `French`, `German`, `Hebrew`, `Arabic`, `Chinese`
 
+Datasets also available on [HuggingFace](https://huggingface.co/datasets/s-nlp/EverGreen-Multilingual)
+
 ## Usage
 
 ### Training
@@ -114,9 +116,12 @@ python src/generate.py \
 
 | Model | Overall F1 | English | Russian | French | German | Hebrew | Arabic | Chinese |
 |-------|-----------|---------|---------|--------|--------|--------|--------|---------|
-| multilingual-e5-large-instruct | 0.89 | 0.92 | 0.88 | 0.90 | 0.89 | 0.87 | 0.86 | 0.91 |
-| mdeberta-v3-base | 0.87 | 0.90 | 0.86 | 0.88 | 0.87 | 0.85 | 0.84 | 0.89 |
-| bert-base-multilingual-cased | 0.85 | 0.88 | 0.84 | 0.86 | 0.85 | 0.83 | 0.82 | 0.87 |
+| multilingual-e5-large-instruct | 0.910 | 0.913 | 0.909 | 0.910 | 0.904 | 0.900 | 0.897 | 0.906 |
+| multilingual-e5-small | 0.821 | 0.822 | 0.819 | 0.815 | 0.804 | 0.807 | 0.817 | 0.815 |
+| mdeberta-v3-base | 0.836 | 0.842 | 0.845 | 0.841 | 0.832 | 0.825 | 0.831 | 0.836 |
+| bert-base-multilingual-cased |  0.893 | 0.900 | 0.889 | 0.884 | 0.889 | 0.883 | 0.902 | 0.891 |
+
+multilingual-e5-small and mmultilingual-e5-large-instruct are available at [Huggingface Collections](https://huggingface.co/collections/s-nlp/evergreen-683465909575cb89d6b904fe)
 
 ### Training Configuration
 
@@ -150,7 +155,7 @@ data:
 
 ## API Keys
 
-For OpenAI translation features:
+We use OpenAI API for additional validational and synth. generation, so you need to import a OpenAI API-key for using it:
 ```bash
 export OPENAI_API_KEY="your-api-key-here"
 ```
