@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EverGreen QA</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap');
+        .author-link {
+            transition: color 0.3s ease;
+        }
+        .author-link:hover {
+            color: #10B981; /* Tailwind green-500 */
+        }
+        .btn {
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+        .btn:hover {
+            transform: translateY(-2px);
+        }
+        .bibtex {
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+        .affiliation {
+            font-size: 0.9rem;
+        }
+        body {
+            background: linear-gradient(to bottom, #ecfdf5, #ffffff), #ffffff;
+            background-size: 100% 200px, 100%;
+            background-repeat: no-repeat;
+            min-height: 200vh;
+        }
+    </style>
+    <script>
+        function copyBibTeX() {
+            const bibtexElement = document.getElementById('bibtex');
+            const bibtexText = bibtexElement.textContent.trim();
+            
+            navigator.clipboard.writeText(bibtexText).then(function() {
+                const copyBtn = document.getElementById('copyBtn');
+                const originalText = copyBtn.innerHTML;
+                
+                // Change button text to show success
+                copyBtn.innerHTML = '<i class="fas fa-check mr-2"></i> Copied!';
+                copyBtn.classList.remove('bg-blue-600', 'hover:bg-blue-700');
+                copyBtn.classList.add('bg-green-600', 'hover:bg-green-700');
+                
+                // Reset button after 2 seconds
+                setTimeout(function() {
+                    copyBtn.innerHTML = originalText;
+                    copyBtn.classList.remove('bg-green-600', 'hover:bg-green-700');
+                    copyBtn.classList.add('bg-blue-600', 'hover:bg-blue-700');
+                }, 2000);
+            }).catch(function(err) {
+                console.error('Failed to copy text: ', err);
+                alert('Failed to copy citation. Please copy manually.');
+            });
+        }
+    </script>
+</head>
+<body class="bg-white text-gray-800">
+
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="max-w-5xl mx-auto py-12 sm:py-16">
+
+            <!-- Header -->
+            <header class="text-center mb-12">
+                <h1 class="text-4xl sm:text-5xl font-bold text-gray-900 leading-tight mb-6">
+                    Will It Still Be True Tomorrow?<br>Multilingual Evergreen Question Classification to Improve Trustworthy QA
+                </h1>
+                <div class="text-lg text-gray-600 mb-4">
+                    <p class="font-medium">
+                        <a href="https://scholar.google.com/citations?user=scC_VeMAAAAJ" target="_blank" class="author-link">Sergey Pletenev</a><sup>*,2,1</sup>,
+                        <a href="https://scholar.google.com/citations?user=VICqxjsAAAAJ" target="_blank" class="author-link">Maria Marina</a><sup>*,2,1</sup>,
+                        <a href="https://scholar.google.com/citations?user=q7Cp2KAAAAAJ" target="_blank" class="author-link">Nikolay Ivanov</a><sup>1</sup>,
+                        <a href="https://scholar.google.com/citations?user=kw40AoAAAAAJ" target="_blank" class="author-link">Daria Galimzianova</a><sup>4</sup>,
+                        <a href="https://scholar.google.com/citations?user=Nc11ae4AAAAJ" target="_blank" class="author-link">Nikita Krayko</a><sup>4</sup>,<br>
+                        <a href="https://scholar.google.com/citations?user=n6pH3YMAAAAJ" target="_blank" class="author-link">Mikhail Salnikov</a><sup>2,1</sup>,
+                        <a href="https://scholar.google.ru/citations?user=saW6OA0AAAAJ" target="_blank" class="author-link">Vasily Konovalov</a><sup>2,5</sup>,
+                        <a href="https://scholar.google.com/citations?user=BYba9hcAAAAJ" target="_blank" class="author-link">Alexander Panchenko</a><sup>1,2</sup>,
+                        <a href="https://scholar.google.com/citations?user=3IDoK8YAAAAJ" target="_blank" class="author-link">Viktor Moskvoretskii</a><sup>1,3</sup>
+                    </p>
+                    <div class="mt-3 text-sm text-gray-500 affiliation">
+                        <p><sup>1</sup>Skoltech, <sup>2</sup>AIRI, <sup>3</sup>HSE University, <sup>4</sup>MTS AI, <sup>5</sup>MIPT</p>
+                        <p class="mt-1 text-xs">*Indicates Equal Contribution</p>
+                    </div>
+                </div>
+            </header>
+
+            <!-- Links -->
+            <div class="flex flex-wrap justify-center gap-4 mb-12">
+                <a href="https://huggingface.co/papers/2505.21115" target="_blank" class="btn bg-gray-800 text-white hover:bg-gray-700 font-medium py-2 px-6 rounded-lg shadow-md inline-flex items-center">
+                    <i class="fas fa-file-alt mr-2"></i> Paper
+                </a>
+                <a href="https://github.com/s-nlp/Evergreen-classification" target="_blank" class="btn bg-gray-800 text-white hover:bg-gray-700 font-medium py-2 px-6 rounded-lg shadow-md inline-flex items-center">
+                    <i class="fab fa-github mr-2"></i> Code
+                </a>
+                <a href="https://huggingface.co/collections/s-nlp/evergreen-683465909575cb89d6b904fe" target="_blank" class="btn bg-gray-800 text-white hover:bg-gray-700 font-medium py-2 px-6 rounded-lg shadow-md inline-flex items-center">
+                    <img src="https://huggingface.co/front/assets/huggingface_logo-noborder.svg" alt="Hugging Face" class="w-5 h-5 mr-2">
+                     Collection
+                </a>
+                 <a href="https://arxiv.org/abs/2505.21115" target="_blank" class="btn bg-gray-800 text-white hover:bg-gray-700 font-medium py-2 px-6 rounded-lg shadow-md inline-flex items-center">
+                    <i class="fas fa-archive mr-2"></i> arXiv
+                </a>
+            </div>
+            
+            <!-- Teaser Image -->
+            <div class="bg-white text-center mb-12 py-8 rounded-lg">
+                <img src="EG_main_leaves_mutable.png" alt="Evergreen vs Mutable Questions Classification" class="mx-auto max-w-full h-auto">
+            </div>
+
+            <!-- Examples Section -->
+            <section class="mb-12">
+                <h2 class="text-3xl font-bold text-gray-900 mb-6">🌱 Understanding Evergreen vs Mutable</h2>
+                <div class="grid md:grid-cols-2 gap-6">
+                    
+                    <!-- Evergreen Examples -->
+                    <div class="bg-green-50 border border-green-200 rounded-lg p-6">
+                        <div class="flex items-center mb-4">
+                            <i class="fas fa-leaf text-green-600 text-xl mr-3"></i>
+                            <h3 class="text-xl font-semibold text-green-800">Evergreen Questions</h3>
+                        </div>
+                        <p class="text-green-700 mb-4 text-sm">Answers remain stable over time</p>
+                        <div class="space-y-3">
+                            <div class="bg-white p-3 rounded border-l-4 border-green-400">
+                                <p class="text-gray-800 font-medium">"What is the chemical symbol for oxygen?"</p>
+                                <p class="text-gray-600 text-sm mt-1">Answer: O (will never change)</p>
+                            </div>
+                            <div class="bg-white p-3 rounded border-l-4 border-green-400">
+                                <p class="text-gray-800 font-medium">"Who wrote Romeo and Juliet?"</p>
+                                <p class="text-gray-600 text-sm mt-1">Answer: William Shakespeare (historical fact)</p>
+                            </div>
+                            <div class="bg-white p-3 rounded border-l-4 border-green-400">
+                                <p class="text-gray-800 font-medium">"What is the largest planet in our solar system?"</p>
+                                <p class="text-gray-600 text-sm mt-1">Answer: Jupiter (astronomical fact)</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Mutable Examples -->
+                    <div class="bg-orange-50 border border-orange-200 rounded-lg p-6">
+                        <div class="flex items-center mb-4">
+                            <i class="fas fa-clock text-orange-600 text-xl mr-3"></i>
+                            <h3 class="text-xl font-semibold text-orange-800">Mutable Questions</h3>
+                        </div>
+                        <p class="text-orange-700 mb-4 text-sm">Answers change over time</p>
+                        <div class="space-y-3">
+                            <div class="bg-white p-3 rounded border-l-4 border-orange-400">
+                                <p class="text-gray-800 font-medium">"Who is the current President of the United States?"</p>
+                                <p class="text-gray-600 text-sm mt-1">Changes every 4-8 years</p>
+                            </div>
+                            <div class="bg-white p-3 rounded border-l-4 border-orange-400">
+                                <p class="text-gray-800 font-medium">"What is the world's tallest building?"</p>
+                                <p class="text-gray-600 text-sm mt-1">Changes as new buildings are constructed</p>
+                            </div>
+                            <div class="bg-white p-3 rounded border-l-4 border-orange-400">
+                                <p class="text-gray-800 font-medium">"How many people live in Tokyo?"</p>
+                                <p class="text-gray-600 text-sm mt-1">Population changes annually</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Abstract -->
+            <section class="mb-12">
+                <h2 class="text-3xl font-bold text-gray-900 mb-4">Abstract</h2>
+                <div class="text-lg text-gray-700 leading-relaxed space-y-4">
+                    <p>
+                        Large Language Models (LLMs) often hallucinate in question answering (QA) tasks. A key yet underexplored factor contributing to this is the temporality of questions -- whether they are evergreen (answers remain stable over time) or mutable (answers change). In this work, we introduce EverGreenQA, the first multilingual QA dataset with evergreen labels, supporting both evaluation and training. Using EverGreenQA, we benchmark 12 modern LLMs to assess whether they encode question temporality explicitly (via verbalized judgments) or implicitly (via uncertainty signals). We also train EG-E5, a lightweight multilingual classifier that achieves SoTA performance on this task. Finally, we demonstrate the practical utility of evergreen classification across three applications: improving self-knowledge estimation, filtering QA datasets, and explaining GPT-4o's retrieval behavior.
+                    </p>
+                </div>
+            </section>
+
+            <!-- Key Findings -->
+            <section class="mb-12">
+                <h2 class="text-3xl font-bold text-gray-900 mb-6">🔬 Key Findings</h2>
+                <div class="grid md:grid-cols-2 gap-6">
+                    
+                    <!-- Finding 1 -->
+                    <div class="bg-green-50 border border-green-200 rounded-lg p-6">
+                        <div class="flex items-start space-x-3">
+                            <div class="bg-green-100 rounded-full p-2">
+                                <i class="fas fa-brain text-green-600"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-semibold text-green-800 mb-2">LLMs Show Limited Evergreen Awareness</h3>
+                                <p class="text-green-700 text-sm">Even state-of-the-art models like GPT-4 struggle with explicit evergreen classification. Our EG-E5 classifier significantly outperforms all tested LLMs, achieving 91% F1 vs 81-88% for the best LLMs.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Finding 2 -->
+                    <div class="bg-blue-50 border border-blue-200 rounded-lg p-6">
+                        <div class="flex items-start space-x-3">
+                            <div class="bg-blue-100 rounded-full p-2">
+                                <i class="fas fa-search text-blue-600"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-semibold text-blue-800 mb-2">GPT-4o's Retrieval Explained</h3>
+                                <p class="text-blue-700 text-sm">Evergreen-ness is the strongest predictor of GPT-4o's retrieval behavior, more than twice as informative as uncertainty measures, suggesting retrieval is closely tied to question temporality.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Finding 3 -->
+                    <div class="bg-purple-50 border border-purple-200 rounded-lg p-6">
+                        <div class="flex items-start space-x-3">
+                            <div class="bg-purple-100 rounded-full p-2">
+                                <i class="fas fa-database text-purple-600"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-semibold text-purple-800 mb-2">QA Datasets Need Filtering</h3>
+                                <p class="text-purple-700 text-sm">Popular QA benchmarks contain 6-18% mutable questions with outdated answers. Models perform up to 40% better on evergreen questions, highlighting the need for temporal filtering.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Finding 4 -->
+                    <div class="bg-orange-50 border border-orange-200 rounded-lg p-6">
+                        <div class="flex items-start space-x-3">
+                            <div class="bg-orange-100 rounded-full p-2">
+                                <i class="fas fa-chart-line text-orange-600"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-semibold text-orange-800 mb-2">Improved Self-Knowledge</h3>
+                                <p class="text-orange-700 text-sm">Adding evergreen probability as a feature consistently improves self-knowledge estimation across 16 out of 18 evaluation settings, enhancing model trustworthiness.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Dataset -->
+            <section class="mb-12">
+                <h2 class="text-3xl font-bold text-gray-900 mb-4">📊 EverGreenQA Dataset</h2>
+                <div class="bg-gray-50 rounded-lg p-6">
+                    <div class="grid md:grid-cols-2 gap-6">
+                        <div>
+                            <h3 class="font-semibold text-gray-800 mb-3">Dataset Statistics</h3>
+                            <ul class="text-gray-700 space-y-2">
+                                <li><span class="font-medium">4,757</span> total questions across 7 languages</li>
+                                <li><span class="font-medium">3,487</span> training examples</li>
+                                <li><span class="font-medium">1,270</span> test examples</li>
+                                <li><span class="font-medium">Real user queries</span> from AI chat assistant</li>
+                                <li><span class="font-medium">Professional validation</span> by trained linguists</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h3 class="font-semibold text-gray-800 mb-3">Languages Covered</h3>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm">🇺🇸 English</span>
+                                <span class="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm">🇷🇺 Russian</span>
+                                <span class="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm">🇫🇷 French</span>
+                                <span class="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm">🇩🇪 German</span>
+                                <span class="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm">🇮🇱 Hebrew</span>
+                                <span class="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm">🇸🇦 Arabic</span>
+                                <span class="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm">🇨🇳 Chinese</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Applications -->
+            <section class="mb-12">
+                <h2 class="text-3xl font-bold text-gray-900 mb-6">🚀 Real-World Applications</h2>
+                
+                <div class="space-y-6">
+                    <!-- Application 1 -->
+                    <div class="border border-gray-200 rounded-lg p-6 hover:shadow-md transition-shadow">
+                        <div class="flex items-start space-x-4">
+                            <div class="bg-indigo-100 rounded-full p-3">
+                                <i class="fas fa-shield-alt text-indigo-600 text-xl"></i>
+                            </div>
+                            <div class="flex-1">
+                                <h3 class="text-xl font-semibold text-gray-900 mb-2">1. Enhanced Self-Knowledge Estimation</h3>
+                                <p class="text-gray-700 mb-3">Improve LLM trustworthiness by helping models better understand when they know or don't know the answer to a question.</p>
+                                <div class="bg-green-50 p-3 rounded-md">
+                                    <p class="text-green-700 text-sm"><strong>Impact:</strong> Achieved best results in 16 out of 18 evaluation settings across multiple QA datasets</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Application 2 -->
+                    <div class="border border-gray-200 rounded-lg p-6 hover:shadow-md transition-shadow">
+                        <div class="flex items-start space-x-4">
+                            <div class="bg-purple-100 rounded-full p-3">
+                                <i class="fas fa-filter text-purple-600 text-xl"></i>
+                            </div>
+                            <div class="flex-1">
+                                <h3 class="text-xl font-semibold text-gray-900 mb-2">2. QA Dataset Curation & Fair Evaluation</h3>
+                                <p class="text-gray-700 mb-3">Automatically filter out questions with time-sensitive answers to create more reliable benchmarks.</p>
+                                <div class="bg-blue-50 p-3 rounded-md">
+                                    <p class="text-blue-700 text-sm"><strong>Discovery:</strong> Popular datasets like Natural Questions contain up to 18% mutable questions with outdated answers</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Application 3 -->
+                    <div class="border border-gray-200 rounded-lg p-6 hover:shadow-md transition-shadow">
+                        <div class="flex items-start space-x-4">
+                            <div class="bg-emerald-100 rounded-full p-3">
+                                <i class="fas fa-microscope text-emerald-600 text-xl"></i>
+                            </div>
+                            <div class="flex-1">
+                                <h3 class="text-xl font-semibold text-gray-900 mb-2">3. Explaining Black-Box AI Behavior</h3>
+                                <p class="text-gray-700 mb-3">Understand and predict when advanced models like GPT-4o decide to search for external information.</p>
+                                <div class="bg-yellow-50 p-3 rounded-md">
+                                    <p class="text-yellow-700 text-sm"><strong>Insight:</strong> Evergreen-ness is 2x more predictive of GPT-4o's retrieval decisions than uncertainty measures</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- Research Contributions -->
+            <section class="mb-12">
+                <h2 class="text-3xl font-bold text-gray-900 mb-6">💡 Research Contributions</h2>
+                <div class="bg-gradient-to-r from-blue-50 to-indigo-50 border border-blue-200 rounded-lg p-6">
+                    <div class="grid md:grid-cols-2 gap-6">
+                        <div>
+                            <h3 class="font-semibold text-blue-900 mb-3">First of Its Kind</h3>
+                            <ul class="text-blue-800 space-y-2 text-sm">
+                                <li>• First multilingual evergreen-aware QA dataset</li>
+                                <li>• First comprehensive evaluation of 12 LLMs on question temporality</li>
+                                <li>• Novel lightweight classifier (EG-E5) achieving SOTA performance</li>
+                                <li>• First systematic analysis of uncertainty-temporality correlation</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h3 class="font-semibold text-blue-900 mb-3">Practical Impact</h3>
+                            <ul class="text-blue-800 space-y-2 text-sm">
+                                <li>• Improved trustworthiness in AI systems</li>
+                                <li>• Fairer evaluation methodologies for QA benchmarks</li>
+                                <li>• Better understanding of retrieval-augmented systems</li>
+                                <li>• Open-source tools for the research community</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Results -->
+            <section class="mb-12">
+                <h2 class="text-3xl font-bold text-gray-900 mb-4">📈 Model Performance</h2>
+                <div class="overflow-x-auto">
+                    <table class="w-full text-left border-collapse">
+                        <thead class="bg-gray-800 text-white">
+                            <tr>
+                                <th class="py-3 px-4 font-bold uppercase">Model</th>
+                                <th class="py-3 px-4 font-bold uppercase">Overall F1</th>
+                                <th class="py-3 px-4 font-bold uppercase">English</th>
+                                <th class="py-3 px-4 font-bold uppercase">Russian</th>
+                                <th class="py-3 px-4 font-bold uppercase">French</th>
+                                <th class="py-3 px-4 font-bold uppercase">German</th>
+                                <th class="py-3 px-4 font-bold uppercase">Hebrew</th>
+                                <th class="py-3 px-4 font-bold uppercase">Arabic</th>
+                                <th class="py-3 px-4 font-bold uppercase">Chinese</th>
+                            </tr>
+                        </thead>
+                        <tbody class="text-gray-700">
+                            <tr class="border-b border-gray-200 hover:bg-gray-100">
+                                <td class="py-3 px-4">multilingual-e5-large-instruct</td>
+                                <td class="py-3 px-4">0.910</td>
+                                <td class="py-3 px-4">0.913</td>
+                                <td class="py-3 px-4">0.909</td>
+                                <td class="py-3 px-4">0.910</td>
+                                <td class="py-3 px-4">0.904</td>
+                                <td class="py-3 px-4">0.900</td>
+                                <td class="py-3 px-4">0.897</td>
+                                <td class="py-3 px-4">0.906</td>
+                            </tr>
+                             <tr class="bg-gray-50 border-b border-gray-200 hover:bg-gray-100">
+                                <td class="py-3 px-4">bert-base-multilingual-cased</td>
+                                <td class="py-3 px-4">0.893</td>
+                                <td class="py-3 px-4">0.900</td>
+                                <td class="py-3 px-4">0.889</td>
+                                <td class="py-3 px-4">0.884</td>
+                                <td class="py-3 px-4">0.889</td>
+                                <td class="py-3 px-4">0.883</td>
+                                <td class="py-3 px-4">0.902</td>
+                                <td class="py-3 px-4">0.891</td>
+                            </tr>
+                            <tr class="border-b border-gray-200 hover:bg-gray-100">
+                                <td class="py-3 px-4">mdeberta-v3-base</td>
+                                <td class="py-3 px-4">0.836</td>
+                                <td class="py-3 px-4">0.842</td>
+                                <td class="py-3 px-4">0.845</td>
+                                <td class="py-3 px-4">0.841</td>
+                                <td class="py-3 px-4">0.832</td>
+                                <td class="py-3 px-4">0.825</td>
+                                <td class="py-3 px-4">0.831</td>
+                                <td class="py-3 px-4">0.836</td>
+                            </tr>
+                            <tr class="bg-gray-50 border-b border-gray-200 hover:bg-gray-100">
+                                <td class="py-3 px-4">multilingual-e5-small</td>
+                                <td class="py-3 px-4">0.821</td>
+                                <td class="py-3 px-4">0.822</td>
+                                <td class="py-3 px-4">0.819</td>
+                                <td class="py-3 px-4">0.815</td>
+                                <td class="py-3 px-4">0.804</td>
+                                <td class="py-3 px-4">0.807</td>
+                                <td class="py-3 px-4">0.817</td>
+                                <td class="py-3 px-4">0.815</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+            
+            <!-- Citation -->
+            <section>
+                <div class="flex justify-between items-center mb-4">
+                    <h2 class="text-3xl font-bold text-gray-900">Citation</h2>
+                    <button id="copyBtn" onclick="copyBibTeX()" class="btn bg-blue-600 text-white hover:bg-blue-700 font-medium py-2 px-4 rounded-lg shadow-md inline-flex items-center">
+                        <i class="fas fa-copy mr-2"></i> Copy BibTeX
+                    </button>
+                </div>
+                <div class="bg-gray-100 rounded-lg p-6 font-mono text-sm text-gray-800 shadow-inner relative">
+                    <pre class="bibtex" id="bibtex"><code>@misc{pletenev2025truetomorrowmultilingualevergreen,
+    title={Will It Still Be True Tomorrow? Multilingual Evergreen Question Classification to Improve Trustworthy QA}, 
+    author={Sergey Pletenev and Maria Marina and Nikolay Ivanov and Daria Galimzianova and Nikita Krayko and Mikhail Salnikov and Vasily Konovalov and Alexander Panchenko and Viktor Moskvoretskii},
+    year={2025},
+    eprint={2505.21115},
+    archivePrefix={arXiv},
+    primaryClass={cs.CL},
+    url={https://arxiv.org/abs/2505.21115}, 
+}</code></pre>
+                </div>
+            </section>
+
+             <!-- Footer -->
+            <footer class="text-center mt-12 pt-8 border-t border-gray-200">
+                <p class="text-gray-500">
+                    Released under the MIT License.
+                </p>
+                <p class="text-gray-500 mt-1">
+                    Created for the <a href="https://github.com/s-nlp/Evergreen-classification" class="text-emerald-600 hover:underline">Evergreen-classification</a> project.
+                </p>
+            </footer>
+
+        </div>
+    </div>
+
+</body>
+</html> 
